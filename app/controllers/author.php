@@ -1,5 +1,6 @@
 <?php
-class authorController
+namespace app\controllers;
+class author
 {
     private $data;
     public function actionAll()

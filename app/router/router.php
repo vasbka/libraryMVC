@@ -1,4 +1,6 @@
-<?php
+<?php namespace app\router;
+use app\controllers\book as book;
+use app\controllers\author as author;
 class router
 {
     private $uri=array();
@@ -14,16 +16,18 @@ class router
         if(!empty($this->uri[2])){
             $action=$this->uri[2];
         }
-        if(!empty($this->uri[3])){
-            $param=$this->uri[3];
+        if(!empty($this->uri[3])) {
+            $param = $this->uri[3];
         }
-        $controllerName=$controller.'Controller';
-        $actions='action'.$action;
-        $control = new $controllerName;
+        var_dump($controller);
+        $actions='action'.$action;        
+        $control = new book;
+        $control = new $controller;
         if($control && $action){
             if(method_exists($control,$actions)) {
-                if ($param)
+                if ($param) {
                     $control->$actions($param);
+                }
                 else
                     $control->$actions();
             }else

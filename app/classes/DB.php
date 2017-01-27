@@ -1,4 +1,6 @@
-<?
+<?php
+namespace app\classes;
+use PDO;
 abstract class DB
 {
     function getConnection()
