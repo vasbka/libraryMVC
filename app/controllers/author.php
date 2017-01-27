@@ -1,16 +1,16 @@
 <?php
-namespace app\controllers;
-class author
+namespace App\Controllers;
+class Author
 {
     private $data;
     public function actionAll()
     {
-        $data = authorModel::getAll();
+        $data = AuthorModel::getAll();
         require_once '/../views/authorView.php';
     }
     public function actionOne($id)
     {
-        $data = authorModel::getById($id);
+        $data = AuthorModel::getById($id);
         if($data)
             require_once '/../views/authorView.php';
         else

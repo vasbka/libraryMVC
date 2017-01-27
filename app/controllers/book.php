@@ -1,17 +1,16 @@
 <?
-namespace app\controllers;
-use app\models\book as BM;
-class book
+namespace App\Controllers;
+class Book
 {
     private $data;
     public function actionAll()
     {
-        $data = BM::getAll();
+        $data = \App\Models\Book::getAll();
         require_once '/../../views/bookView.php';
     }
     public function actionOne($id)
     {
-        $data = BM::getById($id);
+        $data = \App\Models\Book::getById($id);
         if($data)
             require_once '/../../views/bookView.php';
         else

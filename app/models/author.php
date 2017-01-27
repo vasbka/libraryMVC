@@ -1,8 +1,8 @@
 <?php
-namespace app\models;
-use app\models\abstractModel as abs;
-class author
-    extends abs
+namespace App\Models;
+
+class Author
+    extends \App\Models\AbstractModel
 {
     protected static $table='author';
 }

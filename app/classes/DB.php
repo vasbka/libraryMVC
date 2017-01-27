@@ -1,5 +1,5 @@
 <?php
-namespace app\classes;
+namespace App\Classes;
 use PDO;
 abstract class DB
 {

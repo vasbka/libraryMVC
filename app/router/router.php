@@ -1,8 +1,8 @@
-<?php namespace app\router;
-use app\controllers\book as book;
-use app\controllers\author as author;
-class router
+<?php namespace App\Router;
+
+class Router
 {
+    const CNTRPATH = '\\app\\controllers\\';
     private $uri=array();
     public function __construct()
     {
@@ -19,10 +19,9 @@ class router
         if(!empty($this->uri[3])) {
             $param = $this->uri[3];
         }
-        var_dump($controller);
+        $controlFull = self::CNTRPATH.$controller;
         $actions='action'.$action;        
-        $control = new book;
-        $control = new $controller;
+        $control = new $controlFull;
         if($control && $action){
             if(method_exists($control,$actions)) {
                 if ($param) {

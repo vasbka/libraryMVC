@@ -1,6 +1,6 @@
-<?php namespace app\models;
-use app\classes\DB;
-class abstractModel
+<?php namespace App\Models;
+use App\Classes\DB;
+class AbstractModel
 {
     protected static $table;
     public static function getAll()
