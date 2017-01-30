@@ -8,7 +8,7 @@ class Book
         $data = \App\Models\Book::getAll();
         require_once '/../../views/bookView.php';
     }
-    public function actionOne($id)
+    public function actionOne($id = 1)
     {
         $data = \App\Models\Book::getById($id);
         if($data)

@@ -19,8 +19,12 @@ class Router
         if(!empty($this->uri[3])) {
             $param = $this->uri[3];
         }
+        if(empty($controller))
+            throw new \Exception('Контроллер пуст');
         $controlFull = self::CNTRPATH.$controller;
-        $actions='action'.$action;        
+        $actions='action'.$action;
+        if(!class_exists($controlFull,false))
+            throw new \Exception('Класс контроллера не обнаружен');
         $control = new $controlFull;
         if($control && $action){
             if(method_exists($control,$actions)) {
@@ -30,9 +34,8 @@ class Router
                 else
                     $control->$actions();
             }else
-                require_once '404.php';
+                throw new \Exception('Метод контроллера не обнаружен');
         }else
             $control->actionAll();
-
     }
 }

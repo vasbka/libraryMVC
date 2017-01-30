@@ -1,16 +1,16 @@
 <?php namespace App\Models;
-use App\Classes\DB;
+
 class AbstractModel
 {
     protected static $table;
     public static function getAll()
     {
-        $CONNECT = DB::getConnection();
+        $CONNECT = \App\Classes\DB::getConnection();
         return $CONNECT->query("SELECT * FROM ".static::$table);
     }
     public static function getById($id)
     {
-        $CONNECT = DB::getConnection();
+        $CONNECT = \App\Classes\DB::getConnection();
         if(static::$table=='books')
             $param='bookId';
         else
@@ -21,4 +21,5 @@ class AbstractModel
         }
 
     }
+
 }

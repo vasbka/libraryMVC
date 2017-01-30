@@ -5,14 +5,14 @@ class Author
     private $data;
     public function actionAll()
     {
-        $data = AuthorModel::getAll();
-        require_once '/../views/authorView.php';
+        $data = \App\Models\Author::getAll();
+        require_once '/../../views/authorView.php';
     }
-    public function actionOne($id)
+    public function actionOne($id = 1)
     {
-        $data = AuthorModel::getById($id);
+        $data = \App\Models\Author::getById($id);
         if($data)
-            require_once '/../views/authorView.php';
+            require_once '/../../views/authorView.php';
         else
             echo'Такого автора нету.';
     }
