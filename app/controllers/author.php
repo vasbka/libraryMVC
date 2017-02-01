@@ -1,19 +1,26 @@
 <?php
 namespace App\Controllers;
 class Author
+    extends \App\Controllers\BaseController
 {
     private $data;
+
+    function __construct()
+    {
+        $this->view = \App\Classes\View;
+    }
+
     public function actionAll()
     {
-        $data = \App\Models\Author::getAll();
-        require_once '/../../views/authorView.php';
+        $this->data->setData( \App\Models\Author::getAll());
+        $this->view->display('authorView');
     }
     public function actionOne($id = 1)
     {
         $data = \App\Models\Author::getById($id);
         if($data)
-            require_once '/../../views/authorView.php';
+            $this->view->display('authorView');
         else
-            echo'Такого автора нету.';
+            echo'Author with id '.$id.' not found';
     }
 }

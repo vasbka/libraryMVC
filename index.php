@@ -3,9 +3,9 @@ use app\router\router;
 
 require_once __DIR__.'/autoload.php';
 
+$rout = new router();
 
 try {
-    $rout = new router();
     $rout->redirect();
 }catch(Exception $e){
     $data = $e->getMessage();

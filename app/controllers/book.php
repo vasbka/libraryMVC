@@ -1,19 +1,25 @@
 <?
 namespace App\Controllers;
 class Book
+    extends \App\Controllers\BaseController
 {
-    private $data;
+    public $view;
+    function __construct()
+    {
+        $this->view = new \App\Classes\View;
+    }
+
     public function actionAll()
     {
-        $data = \App\Models\Book::getAll();
-        require_once '/../../views/bookView.php';
+        $this->view->setData(\App\Models\Book::getAll());
+        $this->view->display('bookView');
     }
     public function actionOne($id = 1)
     {
-        $data = \App\Models\Book::getById($id);
-        if($data)
-            require_once '/../../views/bookView.php';
+        $this->view->setData(\App\Models\Book::getById($id));
+        if($this->view->checkData())
+            $this->view->display('bookView');
         else
-            echo'Такой книги нету.';
+            echo'Book not found';
     }
 }
