@@ -1,4 +1,6 @@
-<?php namespace App\Models;
+<?php
+
+namespace App\Models;
 
 class AbstractModel
 {
@@ -6,7 +8,7 @@ class AbstractModel
     public static function getAll()
     {
         $CONNECT = \App\Classes\DB::getConnection();
-        return $CONNECT->query("SELECT * FROM ".static::$table);
+        return $CONNECT->query("SELECT * FROM ".static::$table)->fetchAll();
     }
     public static function getById($id)
     {

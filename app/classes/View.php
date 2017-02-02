@@ -5,18 +5,11 @@ namespace App\Classes;
 class View
 {
     private $data;
-    public function display($page)
+    public function display($page,$data)
     {
+
+        extract($data,EXTR_OVERWRITE);
+
         require_once('/views/'.$page.'.php');
-    }
-    public function setData($data)
-    {
-        $this->data = $data;
-    }
-    public function checkData()
-    {
-        if($this->data)
-            return true;
-        return false;
     }
 }

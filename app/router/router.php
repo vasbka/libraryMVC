@@ -1,5 +1,6 @@
-<?php namespace App\Router;
+<?php
 
+namespace App\Router;
 
 class Router
 {
@@ -25,8 +26,7 @@ class Router
             throw new \Exception('Controller is empty');
 
         if(!class_exists($this->controlFull,true))
-            throw new \Exception('Controller not fount');
-
+            throw new \Exception('Controller not found');
         $this->actions='action'.$action;
         if(!method_exists($this->controlFull,$this->actions)){
             throw new \Exception('Method not found');
@@ -35,8 +35,11 @@ class Router
 
     public function redirect()
     {
-        $this->URLisCorrect();
-
+        try {
+            $this->URLisCorrect();
+        }catch(\Exception $e){
+            (new \App\Classes\View)->display('404',array("message"=>$e->getMessage()));
+        }
         $control = new $this->controlFull;
         $action = $this->actions;
         if($this->param)

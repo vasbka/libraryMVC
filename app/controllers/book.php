@@ -1,24 +1,20 @@
-<?
+<?php
 namespace App\Controllers;
 class Book
     extends \App\Controllers\BaseController
 {
     public $view;
-    function __construct()
-    {
-        $this->view = new \App\Classes\View;
-    }
 
     public function actionAll()
     {
-        $this->view->setData(\App\Models\Book::getAll());
-        $this->view->display('bookView');
+        $books = \App\Models\Book::getAll();
+        $this->view->display('bookView',compact('books'));
     }
     public function actionOne($id = 1)
     {
-        $this->view->setData(\App\Models\Book::getById($id));
-        if($this->view->checkData())
-            $this->view->display('bookView');
+        $books = \App\Models\Book::getById($id);
+        if($books)
+            $this->view->display('bookView',compact('books'));
         else
             echo'Book not found';
     }

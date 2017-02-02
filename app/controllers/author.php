@@ -5,21 +5,16 @@ class Author
 {
     private $data;
 
-    function __construct()
-    {
-        $this->view = \App\Classes\View;
-    }
-
     public function actionAll()
     {
-        $this->data->setData( \App\Models\Author::getAll());
-        $this->view->display('authorView');
+        $authors = \App\Models\Author::getAll();
+        $this->view->display('authorView',compact('authors'));
     }
     public function actionOne($id = 1)
     {
-        $data = \App\Models\Author::getById($id);
-        if($data)
-            $this->view->display('authorView');
+        $authors = \App\Models\Author::getById($id);
+        if($authors)
+            $this->view->display('authorView',compact('authors'));
         else
             echo'Author with id '.$id.' not found';
     }
