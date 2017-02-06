@@ -7,9 +7,9 @@
     </title>
 </head>
 <body>
-<? foreach($this->data as $book):?>
+<? foreach($data['books'] as $book):?>
     <div>
-        <?=$book['BookId'];?> : <?=$book['name'];?>
+        <?php echo $book['BookId'];?> : <?php echo $book['name'];?>
     </div>
 <? endforeach;?>
 </body>

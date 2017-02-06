@@ -3,11 +3,10 @@ namespace App\Controllers;
 class Book
     extends \App\Controllers\BaseController
 {
-    public $view;
-
     public function actionAll()
     {
         $books = \App\Models\Book::getAll();
+        
         $this->view->display('bookView',compact('books'));
     }
     public function actionOne($id = 1)

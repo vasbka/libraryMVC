@@ -9,7 +9,7 @@ class Router
 
     public function __construct()
     {
-        $this->uri=explode('/',$_SERVER['REQUEST_URI']);
+        $this->uri=preg_split('/[\\/?]/',$_SERVER['REQUEST_URI']);
     }
     private function URLisCorrect(){
         if(!empty($this->uri[1])){
@@ -42,6 +42,7 @@ class Router
         }
         $control = new $this->controlFull;
         $action = $this->actions;
+        
         if($this->param)
             $control->$action($this->param);
         else
