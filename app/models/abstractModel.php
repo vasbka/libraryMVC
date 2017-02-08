@@ -23,5 +23,9 @@ class AbstractModel
         }
 
     }
+    public static function getAllFull(){
+        $CONNECT = \App\Classes\DB::getConnection();
+        return $CONNECT->query("select books.name,author.namev from books,author,bookAuthor where bookAuthor.bookId=books.BookId and bookAuthor.authorId=author.authorId")->fetchAll();
+    }
 
 }

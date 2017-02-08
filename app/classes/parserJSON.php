@@ -6,10 +6,10 @@ class parserJSON
 {
     function parse($url){
         $_POST = file_get_contents($url);
-        $tmp = json_decode($_POST,assoc);
+        $tmp = json_decode($_POST,true);
         if($tmp['books'])
-            return 'parseLikeArrayOfObj';
+            return $tmp['books'];
         else
-            return 'parseLikeObj';
+            return $tmp;
     }
 }
